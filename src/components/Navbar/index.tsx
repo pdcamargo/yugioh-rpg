@@ -1,14 +1,6 @@
 import React from 'react';
 
-import {
-  List,
-  ListItem,
-  ListIcon,
-  Flex,
-  Image,
-  Box,
-  Link,
-} from '@chakra-ui/core';
+import { Flex, Image, Box, Link } from '@chakra-ui/core';
 
 export const Navbar: React.FC = () => {
   return (

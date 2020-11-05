@@ -1,7 +1,7 @@
 import React from 'react';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 
-import { Box, Progress, Text, Image, Stack, Flex } from '@chakra-ui/core';
+import { Box, Text, Image, Stack, Flex } from '@chakra-ui/core';
 
 import { PlayerVitalsProps } from './types';
 
