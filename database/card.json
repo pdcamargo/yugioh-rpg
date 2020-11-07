@@ -1,0 +1,121 @@
+[
+  {
+    "id": 0,
+    "name": "",
+    "desc": "",
+    "type": "Monster|Spell|Trap.",
+    "image_url": "/cards/",
+    "passcode": "",
+    "status": "Unlimited|Semi-Limited|Limited|Forbidden",
+    "monster_info": {
+      "atk": 0,
+      "def": 0,
+      "level": 0,
+      "attribute": "DARK|DIVINE|EARTH|FIRE|LIGHT|WATER|WIND",
+      "type": "Aqua|Beast|Beast-Warrior|Creator God|Cyberse|Dinosaur|Divine-Beast|Dragon|Fairy|Fiend|Fish|Insect|Machine|Plant|Psychic|Pyro|Reptile|Rock|Sea Serpent|Spellcaster|Thunder|Warrior|Winged Beast|Wyrm|Zombie",
+      "effect_type": "Continuous|Ignition|Trigger|Quick|null",
+      "effect": true,
+      "fusion": true,
+      "link": true,
+      "synchro": true,
+      "pendulum": true,
+      "xyz": true,
+      "ritual": true
+    },
+    "spell_info": {
+      "property": "Normal|Continuous|Equip|Field|Quick Play|Ritual"
+    },
+    "price": {
+      "duelist_point": 0,
+      "credit": 0
+    },
+    "foreign_info": {
+      "pt": {
+        "name": "",
+        "desc": ""
+      },
+      "jp": {
+        "name": "",
+        "desc": ""
+      }
+    }
+  },
+  {
+    "id": 1,
+    "name": "Mystical Elf",
+    "desc": "A delicate elf that lacks offense, but has a terrific defense backed by mystical power.",
+    "type": "Monster",
+    "image_url": "/cards/mystical-elf.jpg",
+    "passcode": "15025844",
+    "status": "Unlimited",
+    "monster_info": {
+      "atk": 800,
+      "def": 2000,
+      "level": 4,
+      "attribute": "LIGHT",
+      "type": "Spellcaster",
+      "effect_type": null,
+      "effect": false,
+      "fusion": false,
+      "link": false,
+      "synchro": false,
+      "pendulum": false,
+      "xyz": false,
+      "ritual": false
+    },
+    "spell_info": null,
+    "price": {
+      "duelist_point": 300,
+      "credit": 3
+    },
+    "foreign_info": {
+      "pt": {
+        "name": "Elfa Mística",
+        "desc": "Uma elfa delicada com pouco poder de ataque, mas com uma incrível defesa proveniente de poderes místicos."
+      },
+      "jp": {
+        "name": "ホーリー・エルフ",
+        "desc": "かよわいエルフだが、聖なる力で身を守りとても守備が高い。"
+      }
+    }
+  },
+  {
+    "id": 2,
+    "name": "Feral Imp",
+    "desc": "A playful little fiend that lurks in the dark, waiting to attack an unwary enemy.",
+    "type": "Monster",
+    "image_url": "/cards/feral-imp.jpg",
+    "passcode": "41392891",
+    "status": "Unlimited",
+    "monster_info": {
+      "atk": 1300,
+      "def": 1400,
+      "level": 4,
+      "attribute": "DARK",
+      "type": "Fiend",
+      "effect_type": null,
+      "effect": false,
+      "fusion": false,
+      "link": false,
+      "synchro": false,
+      "pendulum": false,
+      "xyz": false,
+      "ritual": false
+    },
+    "spell_info": null,
+    "price": {
+      "duelist_point": 300,
+      "credit": 3
+    },
+    "foreign_info": {
+      "pt": {
+        "name": "Diabrete Selvagem",
+        "desc": "Um pequeno demônio brincalhão que espreita nas Trevas, aguardando para atacar um inimigo desatento."
+      },
+      "jp": {
+        "name": "グレムリン",
+        "desc": "いたずら好きの小さな悪魔。暗黒から襲ってくる。気をつける！"
+      }
+    }
+  }
+]

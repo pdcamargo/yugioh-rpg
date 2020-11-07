@@ -2,11 +2,15 @@ import React from 'react';
 
 import { Box } from '@chakra-ui/core';
 
+import { BaseCard } from '~/cards/base-card';
+import { MotionBox } from '~/components/MotionBox';
+
 type BattlefieldCardProps = {
   isDefending?: boolean;
   isFaceDown?: boolean;
   isOpponentCard?: boolean;
   sleeveUrl?: string;
+  card: BaseCard;
 };
 
 export const BattlefieldCard: React.FC<BattlefieldCardProps> = ({
@@ -14,20 +18,17 @@ export const BattlefieldCard: React.FC<BattlefieldCardProps> = ({
   isDefending,
   isFaceDown,
   sleeveUrl,
+  card,
 }) => {
-  const sleeve =
-    sleeveUrl ||
-    'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/e4175c3f-297e-48be-8d30-8480016829c7/d6dlsyg-52f89407-773a-464f-93d3-4648cc91f3fb.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvZTQxNzVjM2YtMjk3ZS00OGJlLThkMzAtODQ4MDAxNjgyOWM3XC9kNmRsc3lnLTUyZjg5NDA3LTc3M2EtNDY0Zi05M2QzLTQ2NDhjYzkxZjNmYi5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.DbrXxjuDy1GCL4bWW-REB40nCLH2ZBz39FsChuxb_nE';
-  const imageUrl = isFaceDown
-    ? sleeve
-    : 'https://storage.googleapis.com/ygoprodeck.com/pics/21844576.jpg';
+  const sleeve = sleeveUrl || '/sleeves/default-sleeve.jpg';
+  const imageUrl = isFaceDown ? sleeve : card?.info.image_url;
 
   const boxShadow = isDefending
     ? `${isOpponentCard ? '-5px' : '5px'} -1px 10px -1px black`
     : `0px ${isOpponentCard ? '-5px' : '5px'} 5px -1px black`;
 
   return (
-    <Box
+    <MotionBox
       bgImg={`url(${imageUrl})`}
       bgSize="100% 100%"
       bgRepeat="no-repeat"
@@ -37,6 +38,9 @@ export const BattlefieldCard: React.FC<BattlefieldCardProps> = ({
       transform={`scaleY(${isOpponentCard ? '-' : ''}1) rotate(${
         isDefending ? '90' : '0'
       }deg)`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
     />
   );
 };

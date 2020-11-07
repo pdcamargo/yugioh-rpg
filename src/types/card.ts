@@ -1,49 +1,48 @@
-export type CardSet = {
-  set_name: string;
-  set_code: string;
-  set_rarity: string;
-  set_rarity_code: string;
-  set_price: string;
-};
+export interface CardMonsterInfo {
+  atk: number;
+  def: number;
+  level: number;
+  attribute: string;
+  type: string;
+  effect_type: string | null;
+  effect: boolean | null;
+  fusion: boolean;
+  link: boolean;
+  synchro: boolean;
+  pendulum: boolean;
+  xyz: boolean;
+  ritual: boolean;
+}
 
-export type CardImage = {
-  id: number;
-  image_url: string;
-  image_url_small: string;
-};
+export interface CardSpellInfo {
+  property: string;
+}
 
-export type CardPrice = {
-  cardmarket_price: string | undefined;
-  tcgplayer_price: string | undefined;
-  ebay_price: string | undefined;
-  amazon_price: string | undefined;
-  coolstuffinc_price: string | undefined;
-};
+export interface CardPrice {
+  duelist_point: number;
+  credit: number;
+}
 
-export type Card = {
+export interface CardForeignInfoData {
+  name: string;
+  desc: string;
+}
+
+export interface CardForeignInfo {
+  pt: CardForeignInfoData;
+  jp: CardForeignInfoData;
+}
+
+export interface CardInfoType {
   id: number;
   name: string;
-  type: string;
   desc: string;
-  /**
-   * Race is also used for spells
-   */
-  race: string;
-  attribute: string;
-  archetype: string;
-  card_sets: CardSet[];
-  card_images: CardImage[];
-  card_prices: CardPrice[];
-  /**
-   * Only monster prop
-   */
-  atk: number | undefined;
-  /**
-   * Only monster prop
-   */
-  def: number | undefined;
-  /**
-   * Only monster prop
-   */
-  level: number | undefined;
-};
+  type: string;
+  image_url: string;
+  passcode: string;
+  status: string;
+  monster_info: CardMonsterInfo | null;
+  spell_info: CardSpellInfo | null;
+  price: CardPrice;
+  foreign_info: CardForeignInfo;
+}

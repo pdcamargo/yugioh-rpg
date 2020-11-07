@@ -1,1 +1,1 @@
-export * from './duel';
+export * from './Duel';
