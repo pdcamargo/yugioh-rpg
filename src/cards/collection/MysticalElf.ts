@@ -1,4 +1,3 @@
-import { sup } from '*.jpg';
 import { BaseCard } from '../base-card';
 
 export class MysticalElf extends BaseCard {
