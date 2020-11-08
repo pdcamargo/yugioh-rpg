@@ -2,8 +2,11 @@ import React from 'react';
 
 import { Box } from '@chakra-ui/core';
 
-import { BaseCard } from '~/cards/base-card';
+import { BaseCard, CardPosition } from '~/cards/base-card';
 import { MotionBox } from '~/components/MotionBox';
+
+import { usePlayerMonsterZone } from '../hooks';
+import { getBoxProps } from './props';
 
 type BattlefieldCardProps = {
   isDefending?: boolean;
@@ -11,6 +14,7 @@ type BattlefieldCardProps = {
   isOpponentCard?: boolean;
   sleeveUrl?: string;
   card: BaseCard;
+  cardPosition: CardPosition;
 };
 
 export const BattlefieldCard: React.FC<BattlefieldCardProps> = ({
@@ -19,28 +23,35 @@ export const BattlefieldCard: React.FC<BattlefieldCardProps> = ({
   isFaceDown,
   sleeveUrl,
   card,
+  cardPosition,
 }) => {
-  const sleeve = sleeveUrl || '/sleeves/default-sleeve.jpg';
-  const imageUrl = isFaceDown ? sleeve : card?.info.image_url;
+  const { changeToMode } = usePlayerMonsterZone();
 
-  const boxShadow = isDefending
-    ? `${isOpponentCard ? '-5px' : '5px'} -1px 10px -1px black`
-    : `0px ${isOpponentCard ? '-5px' : '5px'} 5px -1px black`;
+  const boxProps = getBoxProps(
+    isFaceDown,
+    isOpponentCard,
+    isDefending,
+    sleeveUrl,
+    card.info.image_url
+  );
+
+  const onCardClick = () => {
+    if (card.info.type !== 'Monster' || isOpponentCard) return;
+
+    changeToMode(cardPosition, isDefending ? 'attack' : 'defense');
+  };
 
   return (
     <MotionBox
-      bgImg={`url(${imageUrl})`}
-      bgSize="100% 100%"
-      bgRepeat="no-repeat"
-      w="91px"
-      h="133px"
-      boxShadow={boxShadow}
-      transform={`scaleY(${isOpponentCard ? '-' : ''}1) rotate(${
-        isDefending ? '90' : '0'
-      }deg)`}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
+      boxProps={{
+        ...boxProps,
+        onClick: onCardClick,
+      }}
+      motionProps={{
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        exit: { opacity: 0 },
+      }}
     />
   );
 };

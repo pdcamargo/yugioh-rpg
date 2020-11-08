@@ -37,7 +37,7 @@ export interface CardInfoType {
   id: number;
   name: string;
   desc: string;
-  type: string;
+  type: 'Spell' | 'Trap' | 'Monster';
   image_url: string;
   passcode: string;
   status: string;

@@ -3,15 +3,15 @@ import { CardCollection, composeCard } from '~/cards';
 import { Field, Player } from './types';
 
 const cards = [
-  ...composeCard(CardCollection.MysticalElf, 0, 1),
-  ...composeCard(CardCollection.FeralImp, 0, 1),
+  ...composeCard(CardCollection.MysticalElf, 20),
+  ...composeCard(CardCollection.FeralImp, 20),
 ];
-const extra = composeCard(CardCollection.MysticalElf, 0, 7);
+const extra = composeCard(CardCollection.MysticalElf, 7);
 const hand = [
-  ...composeCard(CardCollection.MysticalElf, 0, 1),
-  ...composeCard(CardCollection.FeralImp, 0, 1),
+  ...composeCard(CardCollection.MysticalElf, 1),
+  ...composeCard(CardCollection.FeralImp, 1),
 ];
-const graveyard = composeCard(CardCollection.MysticalElf, 0, 6);
+const graveyard = composeCard(CardCollection.MysticalElf, 6);
 
 const field: Player = {
   hp: 8000,
@@ -54,6 +54,6 @@ export const defaultField: Field = {
   player: {
     ...field,
     cardSleeve: '/sleeves/2.jpg',
-    playmat: '/playmat/1.jpg',
+    playmat: '/playmat/3.jpg',
   },
 };

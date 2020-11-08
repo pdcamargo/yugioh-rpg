@@ -6,12 +6,16 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import { MotionBoxProps } from './types';
 
-const MotionBoxComponent = motion.custom(Box);
-
-export const MotionBox: React.FC<MotionBoxProps> = (props) => {
+export const MotionBox: React.FC<MotionBoxProps> = ({
+  motionProps,
+  boxProps,
+  children,
+}) => {
   return (
     <AnimatePresence>
-      <MotionBoxComponent {...props} />
+      <motion.div {...motionProps}>
+        <Box {...boxProps}>{children}</Box>
+      </motion.div>
     </AnimatePresence>
   );
 };

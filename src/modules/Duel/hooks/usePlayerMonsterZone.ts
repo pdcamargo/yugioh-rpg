@@ -1,4 +1,4 @@
-import { BaseCard } from '~/cards/base-card';
+import { BaseCard, CardPosition } from '~/cards/base-card';
 
 import { FieldCard, FieldCardInfo } from '../types';
 import { useField } from './useField';
@@ -50,7 +50,41 @@ export const usePlayerMonsterZone = () => {
         hand: newPlayerHand,
       },
     });
+
+    card.onEnterOnBattlefield();
   };
 
-  return { monster: player.monster, placeMonster };
+  const changeToMode = (
+    cardPosition: CardPosition,
+    mode: 'defense' | 'attack',
+    isFaceDown: boolean = false
+  ) => {
+    const isDefending = mode === 'defense';
+    const card = player.monster[cardPosition];
+
+    const newMonsterField: FieldCard = {
+      ...player.monster,
+    };
+
+    const newMonsterInfo: FieldCardInfo = {
+      ...card,
+      isDefending,
+      isFaceDown,
+    };
+
+    newMonsterField[cardPosition] = newMonsterInfo;
+
+    if (card.isFaceDown && !isFaceDown) {
+      card.card.onFlip();
+    }
+
+    updateField({
+      player: {
+        ...player,
+        monster: newMonsterField,
+      },
+    });
+  };
+
+  return { monster: player.monster, placeMonster, changeToMode };
 };

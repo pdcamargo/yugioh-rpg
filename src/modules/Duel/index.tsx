@@ -11,6 +11,8 @@ import { PlayersInfo } from './PlayersInfo';
 import { defaultField } from './props';
 import { Field } from './types';
 
+const isClient = typeof window !== 'undefined';
+
 export const Duel: React.FC = () => {
   const [field, setField] = useState(defaultField);
 
@@ -29,11 +31,15 @@ export const Duel: React.FC = () => {
         bgSize="cover"
         justifyContent="center"
       >
-        <EnemyHand />
+        {isClient && (
+          <>
+            <EnemyHand />
 
-        <PlayersInfo />
-        <Battlefield />
-        <PlayerHand />
+            <PlayersInfo />
+            <Battlefield />
+            <PlayerHand />
+          </>
+        )}
       </Box>
     </DuelContext.Provider>
   );

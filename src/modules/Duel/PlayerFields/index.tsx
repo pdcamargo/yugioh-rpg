@@ -2,6 +2,8 @@ import React, { useMemo } from 'react';
 
 import { Stack } from '@chakra-ui/core';
 
+import { CardPosition } from '~/cards/base-card';
+
 import { BattlefieldCard, EmptyCardSlot } from '../BattlefieldCard';
 import { BattlefieldCardZone } from '../BattlefieldCardZone';
 import { useField } from '../hooks';
@@ -13,20 +15,23 @@ export const PlayerFields: React.FC = () => {
     () => (
       <>
         <BattlefieldCardZone>
-          {Object.values(field.player.monster).map((monster) => (
-            <React.Fragment key={Math.random()}>
-              {monster ? (
-                <BattlefieldCard
-                  isDefending={monster.isDefending}
-                  isFaceDown={monster.isFaceDown}
-                  sleeveUrl={field.player?.cardSleeve}
-                  card={monster.card}
-                />
-              ) : (
-                <EmptyCardSlot />
-              )}
-            </React.Fragment>
-          ))}
+          {Object.values(field.player.monster).map(
+            (monster, index: CardPosition) => (
+              <React.Fragment key={Math.random()}>
+                {monster ? (
+                  <BattlefieldCard
+                    isDefending={monster.isDefending}
+                    isFaceDown={monster.isFaceDown}
+                    sleeveUrl={field.player?.cardSleeve}
+                    card={monster.card}
+                    cardPosition={index}
+                  />
+                ) : (
+                  <EmptyCardSlot />
+                )}
+              </React.Fragment>
+            )
+          )}
         </BattlefieldCardZone>
       </>
     ),
@@ -37,19 +42,22 @@ export const PlayerFields: React.FC = () => {
     () => (
       <>
         <BattlefieldCardZone>
-          {Object.values(field.player.spell).map((spell) => (
-            <React.Fragment key={Math.random()}>
-              {spell ? (
-                <BattlefieldCard
-                  isFaceDown={spell.isFaceDown}
-                  sleeveUrl={field.player?.cardSleeve}
-                  card={spell.card}
-                />
-              ) : (
-                <EmptyCardSlot />
-              )}
-            </React.Fragment>
-          ))}
+          {Object.values(field.player.spell).map(
+            (spell, index: CardPosition) => (
+              <React.Fragment key={Math.random()}>
+                {spell ? (
+                  <BattlefieldCard
+                    isFaceDown={spell.isFaceDown}
+                    sleeveUrl={field.player?.cardSleeve}
+                    card={spell.card}
+                    cardPosition={index}
+                  />
+                ) : (
+                  <EmptyCardSlot />
+                )}
+              </React.Fragment>
+            )
+          )}
         </BattlefieldCardZone>
       </>
     ),

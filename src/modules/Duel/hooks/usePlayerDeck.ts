@@ -16,6 +16,8 @@ export const usePlayerDeck = () => {
         hand: [...player.hand, card],
       },
     });
+
+    card.onBeingDrawn();
   };
 
   return {

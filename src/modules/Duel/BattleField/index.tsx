@@ -15,8 +15,9 @@ export const Battlefield: React.FC = () => {
   const field = useField();
   const { height } = useWindowSize();
 
-  const handleMargin = height <= 730 && {
-    mt: '-110px',
+  const responsiveProps = {
+    marginTop: height <= 730 ? '-80px' : '0',
+    zoom: height <= 730 ? '0.85' : '1',
   };
 
   return (
@@ -24,8 +25,8 @@ export const Battlefield: React.FC = () => {
       style={{
         perspective: '3000px',
         perspectiveOrigin: '40% 0',
+        ...responsiveProps,
       }}
-      {...handleMargin}
     >
       <Box w="auto" h="auto" transform="rotateX(60deg)" p="20px" pos="relative">
         <Box
